@@ -1,0 +1,24 @@
+{
+  // Prettier
+  "prettier.configPath": ".prettierrc.js",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Eslint
+  // "eslint.enable": true,
+  // "eslint.packageManager": "yarn",
+  // "eslint.codeActionsOnSave.mode": "problems",
+  // "eslint.validate": [
+  //   "javascript",
+  //   "javascriptreact",
+  //   "typescript",
+  //   "typescriptreact",
+  //   "html",
+  //   "Markdown",
+  //   "json",
+  //   "jsonc",
+  //   "json5"
+  // ],
+  "cSpell.language": "en,ar",
+  "GitHooks.hooksDirectory": "/Users/dev/Projects/byanat-challenge/.git/hooks"
+}
