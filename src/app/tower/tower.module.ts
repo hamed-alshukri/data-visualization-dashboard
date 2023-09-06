@@ -1,21 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { TableComponent } from './table/table.component';
+
 import { GraphComponent } from './graph/graph.component';
 import { TowerService } from '../service/tower.service';
 
 @NgModule({
-  declarations: [
-    TableComponent, //
-    GraphComponent,
-  ],
+  declarations: [GraphComponent],
   imports: [
     CommonModule, //
   ],
-  exports: [
-    TableComponent, //
-    GraphComponent,
-  ],
+  exports: [GraphComponent],
   providers: [
     TowerService, //
   ],
