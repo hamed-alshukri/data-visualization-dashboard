@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { GraphComponent } from './graph/graph.component';
+import { ChartComponent } from './chart/chart.component';
 import { TowerService } from '../service/tower.service';
 
 @NgModule({
-  declarations: [GraphComponent],
+  declarations: [ChartComponent],
   imports: [
     CommonModule, //
   ],
-  exports: [GraphComponent],
+  exports: [ChartComponent],
   providers: [
     TowerService, //
   ],
