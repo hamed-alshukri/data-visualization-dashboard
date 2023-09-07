@@ -2,13 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { TowerService } from '../service/tower.service';
+import { MainComponent } from './main/main.component';
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule, //
   ],
-  exports: [],
+  exports: [MainComponent],
   providers: [
     TowerService, //
   ],

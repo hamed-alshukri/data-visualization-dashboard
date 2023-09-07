@@ -1,0 +1,32 @@
+<mat-button-toggle-group
+  #group="matButtonToggleGroup"
+  value="table_chart">
+  <mat-button-toggle
+    value="table"
+    aria-label="Table View">
+    <mat-icon aria-hidden="true">grid_on</mat-icon> Table
+  </mat-button-toggle>
+  <mat-button-toggle
+    value="chart"
+    aria-label="Chart View">
+    <mat-icon aria-hidden="true">pie_chart</mat-icon> Chart
+  </mat-button-toggle>
+
+  <!-- To be removed -->
+  <mat-button-toggle
+    value="table_chart"
+    aria-label="Table & Chart">
+    <mat-icon aria-hidden="true">table_chart</mat-icon> Both
+  </mat-button-toggle>
+</mat-button-toggle-group>
+
+<div
+  class="widgets"
+  [ngSwitch]="group.value">
+  <!-- To be removed: start -->
+  <app-table *ngSwitchDefault></app-table>
+  <app-chart *ngSwitchDefault></app-chart>
+  <!-- To be removed: end -->
+  <app-table *ngSwitchCase="'table'"></app-table>
+  <app-chart *ngSwitchCase="'chart'"></app-chart>
+</div>

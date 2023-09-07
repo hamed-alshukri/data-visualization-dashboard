@@ -1,0 +1,5 @@
+.widgets {
+  display: flexbox;
+  align-items: center;
+  flex-direction: row;
+}
