@@ -7,8 +7,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { TowerModule } from './tower/tower.module';
 import { TableComponent } from './tower/table/table.component';
+import { ChartComponent } from './tower/chart/chart.component';
 
 @NgModule({
   declarations: [
@@ -17,9 +17,9 @@ import { TableComponent } from './tower/table/table.component';
   imports: [
     BrowserModule, //
     AppRoutingModule,
-    TowerModule,
     NoopAnimationsModule,
     TableComponent,
+    ChartComponent,
   ],
   providers: [
     provideHttpClient(), //
