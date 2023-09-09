@@ -4,8 +4,8 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 
-import { TowerService } from '../../service/tower.service';
 import { Tower } from '../../types/tower.type';
+import { SharedData } from 'src/app/service/tower.data';
 
 @Component({
   selector: 'app-table',
@@ -48,18 +48,17 @@ export class TableComponent implements OnInit, AfterViewInit {
   ];
 
   constructor(
-    private towerService: TowerService,
-    private _liveAnnouncer: LiveAnnouncer
+    private _liveAnnouncer: LiveAnnouncer,
+    private sharedData: SharedData
   ) {}
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   ngOnInit() {
-    this.towerService.getTowers().subscribe(towers => {
+    this.sharedData.value.subscribe(towers => {
       this.dataSource.data = towers;
     });
-    // this.dataSource = this.towerService.getTowers();
   }
 
   ngAfterViewInit() {

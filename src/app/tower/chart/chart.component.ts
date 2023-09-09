@@ -7,8 +7,8 @@ import {
   NgApexchartsModule,
 } from 'ng-apexcharts';
 
-import { TowerService } from '../../service/tower.service';
 import { Tower } from '../../types/tower.type';
+import { SharedData } from 'src/app/service/tower.data';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
@@ -28,7 +28,7 @@ export class ChartComponent implements OnInit {
   @ViewChild('chart') chart: ApexChartComponent;
   public chartOptions: Partial<ChartOptions>;
 
-  constructor(private towerService: TowerService) {
+  constructor(private sharedData: SharedData) {
     this.chartOptions = {
       chart: {
         width: 380,
@@ -50,19 +50,19 @@ export class ChartComponent implements OnInit {
     };
   }
 
-  ngOnInit() {
-    this.towerService.getTowers().subscribe(towers => {
-      const groupedData = towers.reduce(
-        (group: Record<string, Tower[]>, data) => {
-          const { technology } = data;
-          group[technology] = group[technology] ?? [];
-          group[technology].push(data);
-          return group;
-        },
-        {}
-      );
+  groupByData(records: Tower[], key: keyof Tower) {
+    return records.reduce((group: Record<string, Tower[]>, data) => {
+      const keyData: string | number = data[key];
+      group[keyData] = group[keyData] ?? [];
+      group[keyData].push(data);
+      return group;
+    }, {});
+  }
 
-      console.log('group', groupedData);
+  ngOnInit() {
+    this.sharedData.value.subscribe(towers => {
+      const groupedData = this.groupByData(towers, 'technology');
+
       this.chartOptions.labels = Object.keys(groupedData);
       this.chartOptions.series = Object.values(groupedData).map(
         (group: Tower[]) => group.length

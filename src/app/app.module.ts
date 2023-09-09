@@ -8,6 +8,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { TowerModule } from './tower/tower.module';
+import { SharedData } from 'src/app/service/tower.data';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { TowerModule } from './tower/tower.module';
   ],
   providers: [
     provideHttpClient(), //
+    SharedData,
   ],
   bootstrap: [
     AppComponent, //
