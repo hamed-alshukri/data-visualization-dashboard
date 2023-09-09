@@ -1,3 +1,5 @@
+@use '@angular/material' as mat;
+
 .custom-badge .badge-default {
   background-color: #999;
   & span {
@@ -35,4 +37,8 @@
 .table-header {
   display: flex;
   flex-direction: row;
+}
+
+.density-settings-1 {
+  @include mat.form-field-density(-5);
 }

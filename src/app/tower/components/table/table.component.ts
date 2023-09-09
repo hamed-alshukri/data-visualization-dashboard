@@ -1,5 +1,11 @@
 import { LiveAnnouncer } from '@angular/cdk/a11y';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
@@ -14,7 +20,7 @@ import { SharedData } from 'src/app/tower/services/tower.data';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css'],
+  styleUrls: ['./table.component.scss'],
   standalone: true,
   imports: [
     MatTableModule, //
@@ -25,7 +31,7 @@ import { SharedData } from 'src/app/tower/services/tower.data';
     MatInputModule,
     CommonModule,
   ],
-  // providers: [TowerService],
+  encapsulation: ViewEncapsulation.None,
 })
 export class TableComponent implements OnInit, AfterViewInit {
   // The table should have the following columns:

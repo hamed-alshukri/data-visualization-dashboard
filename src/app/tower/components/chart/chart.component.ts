@@ -20,7 +20,7 @@ export type ChartOptions = {
 @Component({
   selector: 'app-chart',
   templateUrl: './chart.component.html',
-  styleUrls: ['./chart.component.css'],
+  styleUrls: ['./chart.component.scss'],
   standalone: true,
   imports: [NgApexchartsModule],
 })
