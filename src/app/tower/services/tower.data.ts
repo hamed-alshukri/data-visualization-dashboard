@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, AsyncSubject } from 'rxjs';
-import { Tower } from '../types/tower.type';
+
+import { Tower } from 'src/app/tower/types/tower.type';
 
 @Injectable()
 export class SharedData {

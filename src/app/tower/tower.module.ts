@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { TowerService } from '../service/tower.service';
-import { MainComponent } from './main/main.component';
-
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 
-import { TableComponent } from './table/table.component';
-import { ChartComponent } from './chart/chart.component';
+import { TowerService } from 'src/app/tower/services/tower.service';
+
+import { MainComponent } from 'src/app/tower/components/main/main.component';
+import { TableComponent } from 'src/app/tower/components/table/table.component';
+import { ChartComponent } from 'src/app/tower/components/chart/chart.component';
 
 @NgModule({
   declarations: [MainComponent],

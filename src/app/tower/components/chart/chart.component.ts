@@ -7,8 +7,8 @@ import {
   NgApexchartsModule,
 } from 'ng-apexcharts';
 
-import { Tower } from '../../types/tower.type';
-import { SharedData } from 'src/app/service/tower.data';
+import { Tower } from 'src/app/tower/types/tower.type';
+import { SharedData } from 'src/app/tower/services/tower.data';
 
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;

@@ -4,8 +4,8 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 
-import { Tower } from '../../types/tower.type';
-import { SharedData } from 'src/app/service/tower.data';
+import { Tower } from 'src/app/tower/types/tower.type';
+import { SharedData } from 'src/app/tower/services/tower.data';
 
 @Component({
   selector: 'app-table',

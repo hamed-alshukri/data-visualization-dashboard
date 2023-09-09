@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { TowerService } from '../../service/tower.service';
-import { SharedData } from 'src/app/service/tower.data';
+import { TowerService } from 'src/app/tower/services/tower.service';
+import { SharedData } from 'src/app/tower/services/tower.data';
 
 @Component({
   selector: 'app-main',
