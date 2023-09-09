@@ -1,5 +1,6 @@
-.widgets {
-  display: flexbox;
-  align-items: center;
-  flex-direction: row;
+.view-toggler {
+  margin-bottom: 20px;
+}
+#toggler-title {
+  margin-right: 10px;
 }

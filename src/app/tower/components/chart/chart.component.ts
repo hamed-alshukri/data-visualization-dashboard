@@ -61,7 +61,7 @@ export class ChartComponent implements OnInit {
 
   ngOnInit() {
     this.sharedData.value.subscribe(towers => {
-      const groupedData = this.groupByData(towers, 'technology');
+      const groupedData = this.groupByData(towers, 'tower_type');
 
       this.chartOptions.labels = Object.keys(groupedData);
       this.chartOptions.series = Object.values(groupedData).map(

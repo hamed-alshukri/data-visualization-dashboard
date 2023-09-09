@@ -1,32 +1,34 @@
-<mat-button-toggle-group
-  #group="matButtonToggleGroup"
-  value="table_chart">
-  <mat-button-toggle
-    value="table"
-    aria-label="Table View">
-    <mat-icon aria-hidden="true">grid_on</mat-icon> Table
-  </mat-button-toggle>
-  <mat-button-toggle
-    value="chart"
-    aria-label="Chart View">
-    <mat-icon aria-hidden="true">pie_chart</mat-icon> Chart
-  </mat-button-toggle>
-
-  <!-- To be removed -->
-  <mat-button-toggle
-    value="table_chart"
-    aria-label="Table & Chart">
-    <mat-icon aria-hidden="true">table_chart</mat-icon> Both
-  </mat-button-toggle>
-</mat-button-toggle-group>
+<mat-card class="view-toggler">
+  <mat-card-content>
+    <span id="toggler-title">View as:</span>
+    <mat-button-toggle-group
+      #group="matButtonToggleGroup"
+      value="table">
+      <mat-button-toggle
+        value="table"
+        aria-label="Table View">
+        <mat-icon aria-hidden="true">grid_on</mat-icon> Table
+      </mat-button-toggle>
+      <mat-button-toggle
+        value="chart"
+        aria-label="Chart View">
+        <mat-icon aria-hidden="true">pie_chart</mat-icon> Chart
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-card-content>
+</mat-card>
 
 <div
   class="widgets"
   [ngSwitch]="group.value">
-  <!-- To be removed: start -->
-  <app-table *ngSwitchDefault></app-table>
-  <app-chart *ngSwitchDefault></app-chart>
-  <!-- To be removed: end -->
-  <app-table *ngSwitchCase="'table'"></app-table>
-  <app-chart *ngSwitchCase="'chart'"></app-chart>
+  <mat-card *ngSwitchCase="'table'">
+    <mat-card-content>
+      <app-table></app-table>
+    </mat-card-content>
+  </mat-card>
+  <mat-card *ngSwitchCase="'chart'">
+    <mat-card-content>
+      <app-chart></app-chart>
+    </mat-card-content>
+  </mat-card>
 </div>

@@ -9,6 +9,7 @@ import { AppComponent } from 'src/app/app.component';
 
 import { TowerModule } from 'src/app/tower/tower.module';
 import { SharedData } from 'src/app/tower/services/tower.data';
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { SharedData } from 'src/app/tower/services/tower.data';
     AppRoutingModule,
     NoopAnimationsModule,
     TowerModule,
+    HeaderComponent,
   ],
   providers: [
     provideHttpClient(), //

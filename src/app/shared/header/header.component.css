@@ -1,0 +1,10 @@
+header {
+  background-color: #fff;
+}
+.mat-toolbar {
+  padding: 2% 10%;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}

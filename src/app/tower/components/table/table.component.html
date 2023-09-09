@@ -1,150 +1,47 @@
-<table
-  mat-table
-  [dataSource]="dataSource"
-  matSort
-  (matSortChange)="announceSortChange($event)"
-  class="mat-elevation-z8">
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
+<div>
+  <table
+    mat-table
+    [dataSource]="dataSource"
+    matSort
+    (matSortChange)="announceSortChange($event)">
+    <ng-container
+      [matColumnDef]="column"
+      *ngFor="let column of displayedColumns">
+      <th
+        mat-header-cell
+        *matHeaderCellDef>
+        {{ getColumnName(column) }}
+      </th>
+      <td
+        mat-cell
+        *matCellDef="let element">
+        <div *ngIf="column === 'tower_type' || column === 'technology'">
+          <mat-chip-listbox
+            [attr.aria-label]="element[column]"
+            class="custom-badge">
+            <mat-chip [ngClass]="getChipColor(element[column], column)">
+              {{ element[column] }}
+            </mat-chip>
+          </mat-chip-listbox>
+        </div>
 
-  <!-- Tower ID Column -->
-  <ng-container matColumnDef="tower_id">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      sortActionDescription="Sort by Tower ID">
-      Tower ID
-    </th>
-    <td
-      mat-cell
-      *matCellDef="let element">
-      {{ element.tower_id }}
-    </td>
-  </ng-container>
+        <div *ngIf="column !== 'tower_type' && column !== 'technology'">
+          {{ element[column] }}
+        </div>
+      </td>
+    </ng-container>
 
-  <!-- Operator Column -->
-  <ng-container matColumnDef="operator">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      sortActionDescription="Sort by Operator">
-      Operator
-    </th>
-    <td
-      mat-cell
-      *matCellDef="let element">
-      {{ element.operator }}
-    </td>
-  </ng-container>
+    <tr
+      mat-header-row
+      *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+      mat-row
+      *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
 
-  <!-- Address Column -->
-  <ng-container matColumnDef="address">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      sortActionDescription="Sort by Address">
-      Address
-    </th>
-    <td
-      mat-cell
-      *matCellDef="let element">
-      {{ element.address }}
-    </td>
-  </ng-container>
-
-  <!-- Height Column -->
-  <ng-container matColumnDef="height">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      sortActionDescription="Sort by Height">
-      Height
-    </th>
-    <td
-      mat-cell
-      *matCellDef="let element">
-      {{ element.height }}
-    </td>
-  </ng-container>
-
-  <!-- Tower Type Column -->
-  <ng-container matColumnDef="tower_type">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      sortActionDescription="Sort by Tower Type">
-      Tower Type
-    </th>
-    <td
-      mat-cell
-      *matCellDef="let element">
-      {{ element.tower_type }}
-    </td>
-  </ng-container>
-
-  <!-- Latitude Column -->
-  <ng-container matColumnDef="latitude">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      sortActionDescription="Sort by Latitude">
-      Latitude
-    </th>
-    <td
-      mat-cell
-      *matCellDef="let element">
-      {{ element.latitude }}
-    </td>
-  </ng-container>
-
-  <!-- Longitude Column -->
-  <ng-container matColumnDef="longitude">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      sortActionDescription="Sort by Longitude">
-      Longitude
-    </th>
-    <td
-      mat-cell
-      *matCellDef="let element">
-      {{ element.longitude }}
-    </td>
-  </ng-container>
-
-  <!-- Technology Column -->
-  <ng-container matColumnDef="technology">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      sortActionDescription="Sort by Technology">
-      Technology
-    </th>
-    <td
-      mat-cell
-      *matCellDef="let element">
-      {{ element.technology }}
-    </td>
-  </ng-container>
-
-  <tr
-    mat-header-row
-    *matHeaderRowDef="displayedColumns"></tr>
-  <tr
-    mat-row
-    *matRowDef="let row; columns: displayedColumns"></tr>
-</table>
-
-<mat-paginator
-  [pageSizeOptions]="[5, 10, 20]"
-  showFirstLastButtons
-  aria-label="Select page of periodic elements">
-</mat-paginator>
+  <mat-paginator
+    [pageSizeOptions]="[5, 10, 20]"
+    showFirstLastButtons
+    aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>

@@ -1,0 +1,30 @@
+.custom-badge .badge-default {
+  background-color: #999;
+  & span {
+    color: #272727;
+  }
+}
+.custom-badge .badge-info {
+  background-color: #b4dcff;
+  & span {
+    color: #005aa9;
+  }
+}
+.custom-badge .badge-success {
+  background-color: #c4ec98;
+  & span {
+    color: #498c00;
+  }
+}
+.custom-badge .badge-warning {
+  background-color: #fbdbad;
+  & span {
+    color: #844e00;
+  }
+}
+.custom-badge .badge-danger {
+  background-color: #ffc0be;
+  & span {
+    color: #783c3a;
+  }
+}

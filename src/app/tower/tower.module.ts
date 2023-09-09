@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatCardModule } from '@angular/material/card';
 
 import { TowerService } from 'src/app/tower/services/tower.service';
 
@@ -17,6 +18,7 @@ import { ChartComponent } from 'src/app/tower/components/chart/chart.component';
     ChartComponent,
     MatIconModule,
     MatButtonToggleModule,
+    MatCardModule,
     CommonModule,
   ],
   exports: [MainComponent],
