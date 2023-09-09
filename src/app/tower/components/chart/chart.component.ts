@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import {
   ChartComponent as ApexChartComponent,
   ApexNonAxisChartSeries,
@@ -6,8 +6,8 @@ import {
   NgApexchartsModule,
 } from 'ng-apexcharts';
 
-import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule, MatSelectChange } from '@angular/material/select';
 
 import { Tower } from 'src/app/tower/types/tower.type';
 import { SharedData } from 'src/app/tower/services/tower.data';
@@ -23,11 +23,15 @@ export type ChartOptions = {
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss'],
   standalone: true,
-  imports: [NgApexchartsModule, MatFormFieldModule, MatInputModule],
+  encapsulation: ViewEncapsulation.None,
+  imports: [NgApexchartsModule, MatFormFieldModule, MatSelectModule],
 })
 export class ChartComponent implements OnInit {
   @ViewChild('chart') chart: ApexChartComponent;
   public chartOptions: Partial<ChartOptions>;
+
+  selected: keyof Tower = 'technology';
+  towerData: Tower[] = [];
 
   constructor(private sharedData: SharedData) {
     this.chartOptions = {
@@ -50,14 +54,24 @@ export class ChartComponent implements OnInit {
 
   ngOnInit() {
     this.sharedData.value.subscribe(towers => {
-      const groupedData = this.groupByData(towers, 'technology');
+      this.towerData = towers;
 
-      this.chartOptions.labels = Object.keys(groupedData);
-      this.chartOptions.series = Object.values(groupedData).map(
-        (group: Tower[]) => group.length
-      );
+      this.setChartData(towers);
     });
   }
 
-  applyFilter(event: Event) {}
+  setChartData(data: Tower[], key: keyof Tower = this.selected) {
+    const groupedData = this.groupByData(data, key);
+
+    this.chartOptions.labels = Object.keys(groupedData);
+    this.chartOptions.series = Object.values(groupedData).map(
+      (group: Tower[]) => group.length
+    );
+  }
+
+  changeChartType(event: MatSelectChange) {
+    const selectValue = event.value as keyof Tower;
+    this.selected = selectValue;
+    this.setChartData(this.towerData, selectValue);
+  }
 }
