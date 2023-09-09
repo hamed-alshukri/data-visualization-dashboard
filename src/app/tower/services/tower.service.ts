@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, catchError, throwError } from 'rxjs';
 
+import { environment } from 'src/environments/environment';
+
 import { Tower } from 'src/app/tower/types/tower.type';
 
 @Injectable({
@@ -34,7 +36,7 @@ export class TowerService {
   getTowers(): Observable<Tower[]> {
     return this.http
       .get<Tower[]>(
-        'https://x8ki-letl-twmt.n7.xano.io/api:jjKtx4O-/api/v2/towers'
+        environment.towersApiUrl
         // 'https://byanat.wiremockapi.cloud/api/v2/towers'
       )
       .pipe(catchError(this.handleError));
