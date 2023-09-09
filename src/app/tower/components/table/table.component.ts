@@ -5,6 +5,8 @@ import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { Tower } from 'src/app/tower/types/tower.type';
 import { SharedData } from 'src/app/tower/services/tower.data';
@@ -19,6 +21,8 @@ import { SharedData } from 'src/app/tower/services/tower.data';
     MatPaginatorModule,
     MatSortModule,
     MatChipsModule,
+    MatFormFieldModule,
+    MatInputModule,
     CommonModule,
   ],
   // providers: [TowerService],
@@ -72,6 +76,11 @@ export class TableComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   /** Announce the change in sort state for assistive technology. */

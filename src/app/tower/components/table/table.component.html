@@ -1,4 +1,16 @@
 <div>
+  <div class="table-header">
+    <h3>Towers</h3>
+    <span class="spacer"></span>
+    <mat-form-field>
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ex. ium"
+        #input />
+    </mat-form-field>
+  </div>
   <table
     mat-table
     [dataSource]="dataSource"
@@ -33,7 +45,7 @@
 
     <tr
       mat-header-row
-      *matHeaderRowDef="displayedColumns"></tr>
+      *matHeaderRowDef="displayedColumns; sticky: true"></tr>
     <tr
       mat-row
       *matRowDef="let row; columns: displayedColumns"></tr>
@@ -42,6 +54,6 @@
   <mat-paginator
     [pageSizeOptions]="[5, 10, 20]"
     showFirstLastButtons
-    aria-label="Select page of periodic elements">
+    aria-label="Select page of towers data">
   </mat-paginator>
 </div>

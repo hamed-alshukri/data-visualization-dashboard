@@ -28,3 +28,11 @@
     color: #783c3a;
   }
 }
+
+.spacer {
+  flex: 1 1 auto;
+}
+.table-header {
+  display: flex;
+  flex-direction: row;
+}
