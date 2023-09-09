@@ -31,14 +31,6 @@
   }
 }
 
-.spacer {
-  flex: 1 1 auto;
-}
-.table-header {
-  display: flex;
-  flex-direction: row;
-}
-
 .density-settings-1 {
   @include mat.form-field-density(-5);
 }

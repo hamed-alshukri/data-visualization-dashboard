@@ -11,3 +11,12 @@ body {
   margin: 0;
   font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
+
+.header-spacer {
+  flex: 1 1 auto;
+}
+
+.widget-header {
+  display: flex;
+  flex-direction: row;
+}

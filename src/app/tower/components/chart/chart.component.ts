@@ -3,9 +3,11 @@ import {
   ChartComponent as ApexChartComponent,
   ApexNonAxisChartSeries,
   ApexChart,
-  ApexResponsive,
   NgApexchartsModule,
 } from 'ng-apexcharts';
+
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { Tower } from 'src/app/tower/types/tower.type';
 import { SharedData } from 'src/app/tower/services/tower.data';
@@ -13,7 +15,6 @@ import { SharedData } from 'src/app/tower/services/tower.data';
 export type ChartOptions = {
   series: ApexNonAxisChartSeries;
   chart: ApexChart;
-  responsive: ApexResponsive[];
   labels: any;
 };
 
@@ -22,7 +23,7 @@ export type ChartOptions = {
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss'],
   standalone: true,
-  imports: [NgApexchartsModule],
+  imports: [NgApexchartsModule, MatFormFieldModule, MatInputModule],
 })
 export class ChartComponent implements OnInit {
   @ViewChild('chart') chart: ApexChartComponent;
@@ -31,22 +32,10 @@ export class ChartComponent implements OnInit {
   constructor(private sharedData: SharedData) {
     this.chartOptions = {
       chart: {
-        width: 380,
-        type: 'pie',
+        width: '100%',
+        height: 400,
+        type: 'donut',
       },
-      responsive: [
-        {
-          breakpoint: 480,
-          options: {
-            chart: {
-              width: 200,
-            },
-            legend: {
-              position: 'bottom',
-            },
-          },
-        },
-      ],
     };
   }
 
@@ -69,4 +58,6 @@ export class ChartComponent implements OnInit {
       );
     });
   }
+
+  applyFilter(event: Event) {}
 }
