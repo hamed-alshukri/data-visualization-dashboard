@@ -1,12 +1,30 @@
 <header>
   <mat-toolbar class="mat-elevation-z1">
-    <span>Analytics Dashboard</span>
+    <h1>Analytics Dashboard</h1>
     <span class="header-spacer"></span>
-    <button
-      mat-icon-button
-      class="icon"
-      aria-label="Reload Towers Data">
-      <mat-icon>refresh</mat-icon>
-    </button>
+    <div>
+      <button
+        mat-icon-button
+        class="icon"
+        aria-label="Reload Towers Data">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button
+        *ngIf="!isFullScreen"
+        mat-icon-button
+        class="icon"
+        aria-label="Reload Towers Data"
+        (click)="openFullscreen()">
+        <mat-icon>fullscreen</mat-icon>
+      </button>
+      <button
+        *ngIf="isFullScreen"
+        mat-icon-button
+        class="icon"
+        aria-label="Reload Towers Data"
+        (click)="closeFullscreen()">
+        <mat-icon>fullscreen_exit</mat-icon>
+      </button>
+    </div>
   </mat-toolbar>
 </header>
