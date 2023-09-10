@@ -2,6 +2,11 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.1.
 
+## Environment Variable
+
+The projects uses environment variables to store the API keys, API URLs and other variables. The environment variables are stored in the `environment.ts` file. The file is not included in the repository for security reasons but a sample file ([`src/environments/environment.ts.sample`](./src/environments/environment.ts.sample)) is included.
+To use the sample file, copy it to `src/environments/environment.ts` and `src/environments/environment.development.ts`, and replace the values with the correct ones.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
