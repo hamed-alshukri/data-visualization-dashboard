@@ -1,30 +1,30 @@
 @use '@angular/material' as mat;
 
-.custom-badge .badge-default {
+.custom-badge .mat-mdc-standard-chip.badge-default {
   background-color: #999;
   & span {
     color: #272727;
   }
 }
-.custom-badge .badge-info {
+.custom-badge .mat-mdc-standard-chip.badge-info {
   background-color: #b4dcff;
   & span {
     color: #005aa9;
   }
 }
-.custom-badge .badge-success {
+.custom-badge .mat-mdc-standard-chip.badge-success {
   background-color: #c4ec98;
   & span {
     color: #498c00;
   }
 }
-.custom-badge .badge-warning {
+.custom-badge .mat-mdc-standard-chip.badge-warning {
   background-color: #fbdbad;
   & span {
     color: #844e00;
   }
 }
-.custom-badge .badge-danger {
+.custom-badge .mat-mdc-standard-chip.badge-danger {
   background-color: #ffc0be;
   & span {
     color: #783c3a;
