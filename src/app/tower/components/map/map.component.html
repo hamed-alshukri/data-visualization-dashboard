@@ -1,0 +1,30 @@
+<div *ngIf="apiLoaded | async">
+  <google-map
+    height="500px"
+    width="100%"
+    [zoom]="zoom"
+    [center]="center"
+    [options]="options">
+    <map-marker
+      #mapMarker="mapMarker"
+      *ngFor="let marker of markers"
+      [position]="marker.position"
+      [options]="marker.options"
+      (mapClick)="openInfo(mapMarker, marker.info)">
+    </map-marker>
+    <map-info-window>
+      <table>
+        <ng-container *ngFor="let content of infoContent | keyvalue">
+          <tr class="map-window">
+            <td>
+              <strong class="window-title">{{
+                getPropertyName(content.key)
+              }}</strong>
+            </td>
+            <td class="window-content">{{ content.value }}</td>
+          </tr>
+        </ng-container>
+      </table>
+    </map-info-window>
+  </google-map>
+</div>
