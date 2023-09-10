@@ -5,6 +5,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 
+import { TowerService } from 'src/app/tower/services/tower.service';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
@@ -16,7 +17,10 @@ export class HeaderComponent implements OnInit {
   element: any;
   isFullScreen: boolean = false;
 
-  constructor(@Inject(DOCUMENT) private document: any) {}
+  constructor(
+    private towerService: TowerService,
+    @Inject(DOCUMENT) private document: any
+  ) {}
 
   ngOnInit(): void {
     this.element = document.documentElement;
@@ -35,6 +39,10 @@ export class HeaderComponent implements OnInit {
       /* IE/Edge */
       this.element.msRequestFullscreen();
     }
+  }
+
+  reloadData() {
+    this.towerService.reload();
   }
 
   /* Close fullscreen */

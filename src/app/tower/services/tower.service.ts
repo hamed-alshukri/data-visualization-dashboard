@@ -2,7 +2,13 @@
 //
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, catchError, throwError } from 'rxjs';
+import {
+  BehaviorSubject,
+  Observable,
+  catchError,
+  switchMap,
+  throwError,
+} from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 
@@ -13,6 +19,8 @@ import { Tower } from 'src/app/tower/types/tower.type';
 })
 export class TowerService {
   constructor(private http: HttpClient) {}
+
+  reloader$ = new BehaviorSubject(null);
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -33,7 +41,17 @@ export class TowerService {
     );
   }
 
-  getTowers(): Observable<Tower[]> {
+  public getTowers() {
+    return this.reloader$.pipe(
+      switchMap(() => this.http.get<Tower[]>(environment.towersApiUrl))
+    );
+  }
+
+  public reload() {
+    this.reloader$.next(null);
+  }
+
+  getData(): Observable<Tower[]> {
     return this.http
       .get<Tower[]>(
         environment.towersApiUrl
