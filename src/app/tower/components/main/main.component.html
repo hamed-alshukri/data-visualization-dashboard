@@ -1,44 +1,43 @@
-<mat-card class="view-toggler">
-  <mat-card-content>
-    <span id="toggler-title">View as:</span>
-    <mat-button-toggle-group
-      #group="matButtonToggleGroup"
-      value="table">
-      <mat-button-toggle
-        value="table"
-        aria-label="Table View">
-        <mat-icon aria-hidden="true">grid_on</mat-icon> Table
-      </mat-button-toggle>
-      <mat-button-toggle
-        value="chart"
-        aria-label="Chart View">
-        <mat-icon aria-hidden="true">pie_chart</mat-icon> Chart
-      </mat-button-toggle>
-      <mat-button-toggle
-        value="map"
-        aria-label="Map View">
-        <mat-icon aria-hidden="true">map</mat-icon> Map
-      </mat-button-toggle>
-    </mat-button-toggle-group>
-  </mat-card-content>
+<mat-card>
+  <div class="view-toggler">
+    <mat-card-header>
+      <mat-card-title>
+        <span id="toggler-title">Towers</span>
+      </mat-card-title>
+
+      <div></div>
+      <span class="header-spacer"></span>
+      <div>
+        <mat-button-toggle-group
+          #group="matButtonToggleGroup"
+          value="table">
+          <mat-button-toggle
+            value="table"
+            aria-label="Table View">
+            <mat-icon aria-hidden="true">grid_on</mat-icon> Table
+          </mat-button-toggle>
+          <mat-button-toggle
+            value="chart"
+            aria-label="Chart View">
+            <mat-icon aria-hidden="true">pie_chart</mat-icon> Chart
+          </mat-button-toggle>
+        </mat-button-toggle-group>
+      </div>
+      <!-- <mat-card-subtitle>Start</mat-card-subtitle> -->
+    </mat-card-header>
+    <mat-card-content>
+      <div
+        class="widgets"
+        [ngSwitch]="group.value">
+        <app-table *ngSwitchCase="'table'"></app-table>
+        <app-chart *ngSwitchCase="'chart'"></app-chart>
+      </div>
+    </mat-card-content>
+  </div>
 </mat-card>
 
-<div
-  class="widgets"
-  [ngSwitch]="group.value">
-  <mat-card *ngSwitchCase="'table'">
-    <mat-card-content>
-      <app-table></app-table>
-    </mat-card-content>
-  </mat-card>
-  <mat-card *ngSwitchCase="'chart'">
-    <mat-card-content>
-      <app-chart></app-chart>
-    </mat-card-content>
-  </mat-card>
-  <mat-card *ngSwitchCase="'map'">
-    <mat-card-content>
-      <app-map></app-map>
-    </mat-card-content>
-  </mat-card>
-</div>
+<mat-card>
+  <mat-card-content>
+    <app-map></app-map>
+  </mat-card-content>
+</mat-card>

@@ -5,7 +5,7 @@
     <div>
       <button
         mat-icon-button
-        class="icon"
+        class="header-button"
         aria-label="Reload Towers Data"
         (click)="reloadData()">
         <mat-icon>refresh</mat-icon>
@@ -13,7 +13,7 @@
       <button
         *ngIf="!isFullScreen"
         mat-icon-button
-        class="icon"
+        class="header-button"
         aria-label="Reload Towers Data"
         (click)="openFullscreen()">
         <mat-icon>fullscreen</mat-icon>
@@ -21,7 +21,7 @@
       <button
         *ngIf="isFullScreen"
         mat-icon-button
-        class="icon"
+        class="header-button"
         aria-label="Reload Towers Data"
         (click)="closeFullscreen()">
         <mat-icon>fullscreen_exit</mat-icon>

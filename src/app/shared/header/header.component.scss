@@ -1,10 +1,32 @@
-header {
-  background-color: #fff;
+@import '@angular/material/theming';
 
-  h1 {
-    color: rgb(14, 125, 165);
+@include mat-core();
+
+$app-primary: mat-palette($mat-indigo);
+$app-accent: mat-palette($mat-indigo, A200, A100, A400);
+
+$app-theme: mat-light-theme($app-primary, $app-accent);
+
+@mixin mix-app-theme($app-theme) {
+  $primary: map-get($app-theme, primary);
+  $accent: map-get($app-theme, accent);
+
+  header {
+    background-color: #fff;
+
+    h1 {
+      color: mat-color($primary);
+    }
+  }
+  .header-button {
+    color: mat-color($primary);
+    &:hover {
+      color: mat-color($accent);
+    }
+  }
+  .mat-toolbar {
+    padding: 2% 10%;
   }
 }
-.mat-toolbar {
-  padding: 2% 10%;
-}
+
+@include mix-app-theme($app-theme);
