@@ -20,7 +20,9 @@
       *ngFor="let column of displayedColumns">
       <th
         mat-header-cell
-        *matHeaderCellDef>
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by {{ column }}">
         {{ getColumnName(column) }}
       </th>
       <td
