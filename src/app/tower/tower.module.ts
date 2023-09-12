@@ -14,14 +14,18 @@ import { MapComponent } from './components/map/map.component';
 @NgModule({
   declarations: [MainComponent],
   imports: [
-    CommonModule, //
-    TableComponent,
-    ChartComponent,
-    MapComponent,
+    // Core modules
+    CommonModule,
+
+    // Material modules
     MatIconModule,
     MatButtonToggleModule,
     MatCardModule,
-    CommonModule,
+
+    // Custom modules
+    TableComponent,
+    ChartComponent,
+    MapComponent,
   ],
   exports: [MainComponent],
   providers: [

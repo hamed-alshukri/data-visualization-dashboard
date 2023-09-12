@@ -1,4 +1,3 @@
-import { LiveAnnouncer } from '@angular/cdk/a11y';
 import {
   AfterViewInit,
   Component,
@@ -7,6 +6,8 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+
 import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, Sort, MatSortModule } from '@angular/material/sort';
@@ -23,35 +24,20 @@ import { SharedData } from 'src/app/tower/services/tower.data';
   styleUrls: ['./table.component.scss'],
   standalone: true,
   imports: [
-    MatTableModule, //
+    // Material modules
+    MatTableModule,
     MatPaginatorModule,
     MatSortModule,
     MatChipsModule,
     MatFormFieldModule,
     MatInputModule,
+
+    // Core modules
     CommonModule,
   ],
   encapsulation: ViewEncapsulation.None,
 })
 export class TableComponent implements OnInit, AfterViewInit {
-  // The table should have the following columns:
-  // - Tower ID
-  // - Operator
-  // - Address
-  // - Height
-  // - Tower Type
-  // - Latitude
-  // - Longitude
-  // - Technology
-  //
-  // The table should have the following features:
-  // - Pagination
-  // - Sorting
-  // - Filtering
-  // - Row selection
-
-  // dataSource: Tower[] = [];
-
   dataSource = new MatTableDataSource<Tower>([]);
 
   displayedColumns: string[] = [
@@ -84,12 +70,13 @@ export class TableComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
+  // Filter table based on user input
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  /** Announce the change in sort state for assistive technology. */
+  // Announce the change in sort state for assistive technology.
   announceSortChange(sortState: Sort) {
     // This example uses English messages. If your application supports
     // multiple language, you would internationalize these strings.
@@ -102,12 +89,14 @@ export class TableComponent implements OnInit, AfterViewInit {
     }
   }
 
+  // Format column name from snake_case to Title Case
   getColumnName(columnName: string) {
     return columnName
       .replace(/_/g, ' ')
       .replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1));
   }
 
+  // Get chip color based on tower type or technology
   getChipColor(item: any, type: keyof Tower) {
     const towerBadgeColor: Record<string, string> = {
       default: 'badge-default',

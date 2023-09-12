@@ -10,7 +10,6 @@ export class SharedData {
   >();
 
   init(value: Tower[]) {
-    // console.log('SharedData init', value);
     this.valueSubject.next(value);
     this.valueSubject.complete();
   }

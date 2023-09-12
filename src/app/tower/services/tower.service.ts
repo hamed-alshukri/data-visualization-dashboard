@@ -1,14 +1,6 @@
-// angular service to fetch data from https://byanat.wiremockapi.cloud/api/v2/towers
-//
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import {
-  BehaviorSubject,
-  Observable,
-  catchError,
-  switchMap,
-  throwError,
-} from 'rxjs';
+import { BehaviorSubject, switchMap, throwError } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
 
@@ -49,14 +41,5 @@ export class TowerService {
 
   public reload() {
     this.reloader$.next(null);
-  }
-
-  getData(): Observable<Tower[]> {
-    return this.http
-      .get<Tower[]>(
-        environment.towersApiUrl
-        // 'https://byanat.wiremockapi.cloud/api/v2/towers'
-      )
-      .pipe(catchError(this.handleError));
   }
 }

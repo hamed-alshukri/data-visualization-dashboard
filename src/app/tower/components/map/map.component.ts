@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
+
 import { Observable, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
-import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 
 import {
   GoogleMapsModule,
@@ -30,8 +31,13 @@ interface CustomMapMarker {
   styleUrls: ['./map.component.scss'],
   standalone: true,
   imports: [
-    GoogleMapsModule, //
+    // Google Maps Module
+    GoogleMapsModule,
+
+    // Core modules
     CommonModule,
+
+    // HTTP modules
     HttpClientModule,
     HttpClientJsonpModule,
   ],
@@ -40,8 +46,6 @@ export class MapComponent implements OnInit {
   zoom = 12;
   center: google.maps.LatLngLiteral;
   options: google.maps.MapOptions = {
-    // mapTypeId: 'hybrid',
-    mapTypeId: '',
     zoomControl: true,
     scrollwheel: true,
     disableDoubleClickZoom: true,
@@ -146,6 +150,7 @@ export class MapComponent implements OnInit {
     private sharedData: SharedData,
     httpClient: HttpClient
   ) {
+    // Load Google Maps API
     this.apiLoaded = httpClient
       .jsonp(
         `${environment.googleMapsUrl}?key=${environment.googleMapsApi}`,
@@ -162,7 +167,7 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.sharedData.value.subscribe(towers => {
-      // this.dataSource.data = towers;
+      // Construct the markers
       this.markers = towers.map(tower => {
         return {
           position: {
@@ -176,10 +181,12 @@ export class MapComponent implements OnInit {
         };
       });
 
+      // Fit the map to the markers
       this.fitMapMarkers(this.markers);
     });
   }
 
+  // Fit the map to the markers
   fitMapMarkers(markers: CustomMapMarker[]) {
     let bounds = new google.maps.LatLngBounds();
 
@@ -191,6 +198,7 @@ export class MapComponent implements OnInit {
     this.map.fitBounds(bounds, 10);
   }
 
+  // Open the info window
   openInfo(marker: MapMarker, content?: Tower) {
     console.log({
       marker,
@@ -200,6 +208,7 @@ export class MapComponent implements OnInit {
     this.infoWindow.open(marker);
   }
 
+  // Format the property name
   getPropertyName(propertyName: string) {
     return propertyName
       .replace(/_/g, ' ')

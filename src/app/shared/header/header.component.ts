@@ -11,7 +11,15 @@ import { TowerService } from 'src/app/tower/services/tower.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
   standalone: true,
-  imports: [CommonModule, MatToolbarModule, MatIconModule, MatButtonModule],
+  imports: [
+    // Core modules
+    CommonModule,
+
+    // Material modules
+    MatToolbarModule,
+    MatIconModule,
+    MatButtonModule,
+  ],
 })
 export class HeaderComponent implements OnInit {
   element: any;
@@ -26,6 +34,7 @@ export class HeaderComponent implements OnInit {
     this.element = document.documentElement;
   }
 
+  // Trigger fullscreen with support for different browsers
   openFullscreen() {
     if (this.element.requestFullscreen) {
       this.element.requestFullscreen();
@@ -41,11 +50,12 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  // Reload data on demand
   reloadData() {
     this.towerService.reload();
   }
 
-  /* Close fullscreen */
+  // Exit fullscreen with support for different browsers
   closeFullscreen() {
     if (this.document.exitFullscreen) {
       this.document.exitFullscreen();
@@ -61,6 +71,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  // Listen for fullscreen change events
   @HostListener('document:fullscreenchange', ['$event'])
   @HostListener('document:webkitfullscreenchange', ['$event'])
   @HostListener('document:mozfullscreenchange', ['$event'])
@@ -69,6 +80,7 @@ export class HeaderComponent implements OnInit {
     this.checkScreenMode();
   }
 
+  // Check if the browser is in fullscreen mode
   checkScreenMode() {
     if (document.fullscreenElement) {
       //fullscreen

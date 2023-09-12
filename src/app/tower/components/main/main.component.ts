@@ -15,6 +15,7 @@ export class MainComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    // Get towers from the API
     this.towerService.getTowers().subscribe(towers => {
       this.sharedData.init(towers);
     });

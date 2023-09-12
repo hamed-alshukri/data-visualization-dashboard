@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
+
 import {
   ChartComponent as ApexChartComponent,
   ApexNonAxisChartSeries,
@@ -24,7 +25,14 @@ export type ChartOptions = {
   styleUrls: ['./chart.component.scss'],
   standalone: true,
   encapsulation: ViewEncapsulation.None,
-  imports: [NgApexchartsModule, MatFormFieldModule, MatSelectModule],
+  imports: [
+    // ApexCharts modules
+    NgApexchartsModule,
+
+    // Material modules
+    MatFormFieldModule,
+    MatSelectModule,
+  ],
 })
 export class ChartComponent implements OnInit {
   @ViewChild('chart') chart: ApexChartComponent;
@@ -43,6 +51,7 @@ export class ChartComponent implements OnInit {
     };
   }
 
+  // Group data by key
   groupByData(records: Tower[], key: keyof Tower) {
     return records.reduce((group: Record<string, Tower[]>, data) => {
       const keyData: string | number = data[key];
@@ -60,6 +69,7 @@ export class ChartComponent implements OnInit {
     });
   }
 
+  // Set chart data
   setChartData(data: Tower[], key: keyof Tower = this.selected) {
     const groupedData = this.groupByData(data, key);
 
@@ -69,6 +79,7 @@ export class ChartComponent implements OnInit {
     );
   }
 
+  // Change chart type and set chart data accordingly
   changeChartType(event: MatSelectChange) {
     const selectValue = event.value as keyof Tower;
     this.selected = selectValue;
